@@ -1,73 +1,38 @@
-/* App.css */
-
-/* Reset básico y estilos globales inspirados en Airbnb */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #000000; /* Fondo general negro, Airbnb es blanco, pero mantenemos B&N */
-  color: #EBEBEB; /* Texto general blanco/gris muy claro */
-  font-size: 16px; /* Base font size */
-  line-height: 1.5; /* Base line height */
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-  background-color: #1a1a1a;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #f0f0f0;
-}
-
 .App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  text-align: center;
 }
 
-.app-content {
-  flex-grow: 1;
-  width: 100%;
-  max-width: 1760px; /* Ancho máximo de contenedor principal de Airbnb para algunas vistas */
-  padding: 0 24px; /* Padding lateral general para contenido (puede variar por página) */
-  margin: 0 auto; /* Centrar el contenido */
-  box-sizing: border-box;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-/* Estilos para links globales si es necesario, aunque se suelen estilizar por componente */
-a {
-  color: #f0f0f0; /* Links en blanco/gris claro */
-  text-decoration: none; /* Airbnb no usa mucho subrayado por defecto */
-}
-a:hover {
-  text-decoration: underline; /* Subrayado en hover es común */
-  color: #ffffff;
-}
-
-/* Clases de utilidad (opcional, pero pueden ayudar a la consistencia) */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Adaptación del padding del .app-content para diferentes tamaños */
-@media (min-width: 744px) { /* Tablet */
-  .app-content {
-    padding: 0 40px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
 }
 
-@media (min-width: 1128px) { /* Desktop */
-  .app-content {
-    padding: 0 80px;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
