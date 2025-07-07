@@ -20,6 +20,7 @@ const HeartIcon = ({ isFavorite }) => (
 
 function ListingCard({ listing }) {
   const {
+    id, // Asegurarse de que id está aquí
     image,
     title,
     location,
