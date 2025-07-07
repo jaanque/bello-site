@@ -1,0 +1,148 @@
+/* Estilos para ListingCard */
+.listing-card-link {
+  text-decoration: none; /* Quitar subrayado del enlace */
+  color: inherit; /* Heredar color de texto */
+  display: block; /* Para que el enlace ocupe todo el espacio de la tarjeta */
+}
+
+.listing-card {
+  /* border: 1px solid #ebebeb; No es necesario si la imagen ocupa todo y tiene border-radius */
+  /* overflow: hidden; No es necesario si la imagen tiene su propio overflow hidden */
+  cursor: pointer;
+}
+
+.listing-card-image-container {
+  position: relative; /* Para posicionar el badge y el corazón */
+  width: 100%;
+  /* Aspect ratio para la imagen, Airbnb usa algo cercano a 1:0.95 o 1:1 a veces */
+  /* Una forma simple es fijar la altura o usar padding-bottom trick */
+  padding-bottom: 95%; /* (altura / anchura) * 100%. Ajustar según preferencia */
+  /* O una altura fija si prefieres: height: 280px; */
+  border-radius: 12px; /* Bordes redondeados como en Airbnb */
+  overflow: hidden; /* Importante para que la imagen respete el border-radius */
+  background-color: #dddddd; /* Placeholder si la imagen no carga */
+}
+
+.listing-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor manteniendo el aspect ratio */
+  transition: transform 0.3s ease-out; /* Efecto de zoom suave en hover */
+}
+
+.listing-card-link:hover .listing-card-image {
+  transform: scale(1.03); /* Zoom ligero en la imagen al hacer hover en la tarjeta */
+}
+
+.superhost-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente */
+  color: #222222;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* Ajustar si es necesario */
+  z-index: 1;
+  color: white; /* El color del stroke del SVG es blanco */
+}
+
+.favorite-button .heart-icon {
+  transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.favorite-button .heart-icon path {
+  fill: rgba(0, 0, 0, 0.5); /* Color del corazón por defecto (semi-transparente) */
+  stroke: white; /* Borde blanco para contraste */
+  stroke-width: 2px;
+}
+
+.favorite-button .heart-icon.favorite path {
+  fill: #FF385C; /* Color rojo cuando es favorito */
+  stroke: #FF385C; /* El borde también rojo */
+}
+.favorite-button:hover .heart-icon:not(.favorite) path{
+    fill: rgba(0, 0, 0, 0.7); /* Un poco más oscuro en hover si no es favorito */
+}
+.favorite-button:hover .heart-icon path {
+    transform: scale(1.1);
+}
+
+
+.listing-card-info {
+  padding-top: 12px; /* Espacio entre imagen e info */
+}
+
+.listing-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.listing-card-location {
+  font-size: 15px; /* Airbnb usa ~15px */
+  font-weight: 600; /* Semibold */
+  color: #222222;
+  /* Para truncar texto largo si es necesario: */
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+.listing-card-rating {
+  font-size: 14px; /* Un poco más pequeño */
+  font-weight: 400; /* Normal */
+  color: #222222;
+  display: flex;
+  align-items: center;
+}
+
+.listing-card-rating svg { /* StarIcon */
+  margin-right: 4px;
+  fill: #222222; /* Estrella negra */
+}
+
+.listing-card-title {
+  font-size: 15px;
+  font-weight: 400; /* Normal */
+  color: #717171; /* Gris para el título/descripción */
+  margin-bottom: 4px;
+  line-height: 1.3;
+   /* Para truncar texto largo si es necesario: */
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+.listing-card-dates {
+  font-size: 15px;
+  font-weight: 400;
+  color: #717171;
+  margin-bottom: 8px;
+}
+
+.listing-card-price {
+  font-size: 15px;
+  color: #222222;
+  margin-top: 6px; /* Un poco de espacio antes del precio */
+}
+
+.listing-card-price strong {
+  font-weight: 600; /* Precio en negrita */
+}

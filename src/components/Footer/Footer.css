@@ -1,0 +1,146 @@
+/* Estilos para el Footer */
+.footer-container {
+  background-color: #f7f7f7; /* Fondo gris claro como Airbnb */
+  border-top: 1px solid #dddddd;
+  padding: 48px 80px; /* Padding generoso arriba/abajo y a los lados */
+  color: #222222; /* Color de texto principal oscuro */
+  font-size: 14px;
+}
+
+.footer-content {
+  max-width: 1280px; /* Ancho máximo del contenido, similar a Airbnb */
+  margin: 0 auto; /* Centrar el contenido */
+}
+
+.footer-section {
+  /* No se necesita display flex aquí si las columnas se manejan individualmente */
+}
+
+.links-section {
+  display: flex;
+  justify-content: space-between; /* Distribuye las columnas */
+  padding-bottom: 48px; /* Espacio antes de la sección inferior */
+  border-bottom: 1px solid #dddddd; /* Línea divisoria */
+  margin-bottom: 24px; /* Espacio después de la línea divisoria */
+  flex-wrap: wrap; /* Para que las columnas se ajusten en pantallas pequeñas */
+}
+
+.footer-column {
+  min-width: 200px; /* Ancho mínimo para cada columna */
+  margin-bottom: 24px; /* Espacio si se envuelven */
+  padding-right: 24px; /* Espacio entre columnas */
+}
+
+.footer-column h3 {
+  font-size: 14px; /* Mismo tamaño que el texto base, pero en negrita */
+  font-weight: 600; /* Semibold */
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 12px; /* Espacio entre enlaces */
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #222222; /* Color de enlace estándar */
+  transition: text-decoration 0.2s ease;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+}
+
+.bottom-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Para que los enlaces se ajusten */
+}
+
+.bottom-left span,
+.bottom-left a {
+  margin-right: 16px; /* Espacio entre items */
+  margin-bottom: 8px; /* Espacio si se envuelven */
+  white-space: nowrap; /* Evitar que se rompan los enlaces */
+}
+.bottom-left a:last-of-type {
+    margin-right: 0;
+}
+
+
+.bottom-left a {
+  text-decoration: none;
+  color: #222222;
+}
+.bottom-left a:hover {
+  text-decoration: underline;
+}
+
+/* Placeholder para el icono de "Your Privacy Choices" si se añade */
+/* .privacy-choices-icon { ... } */
+
+.bottom-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-button {
+  background: none;
+  border: none;
+  color: #222222;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600; /* Semibold */
+  padding: 8px 0; /* Solo padding vertical si no hay borde */
+  margin-left: 24px; /* Espacio entre botones */
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Espacio si se envuelven */
+}
+.footer-button:first-child {
+    margin-left: 0;
+}
+
+.footer-button:hover {
+  text-decoration: underline;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 24px 40px;
+  }
+  .links-section, .bottom-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-column {
+    width: 100%; /* Columnas ocupan todo el ancho */
+    padding-right: 0;
+    margin-bottom: 32px;
+  }
+  .bottom-right {
+    margin-top: 16px;
+    width: 100%; /* Botones ocupan todo el ancho */
+    justify-content: flex-start;
+  }
+  .footer-button {
+    margin-left: 0;
+    margin-right: 24px; /* Espacio entre botones si están en la misma línea */
+  }
+}

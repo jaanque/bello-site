@@ -1,0 +1,167 @@
+/* Estilos para el Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px; /* Airbnb usa padding horizontal grande, vertical puede ser 0 si la altura es fija */
+  border-bottom: 1px solid #ebebeb;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  height: 80px;
+  box-sizing: border-box; /* Incluir padding y border en la altura total */
+}
+
+.header-left {
+  flex: 1; /* Para empujar el centro */
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-block; /* Para que el enlace tome el tamaño del SVG */
+  color: #FF385C; /* Color del logo de Airbnb */
+}
+
+/* No se usa logo-text por ahora, pero si se añade:
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 8px;
+  color: #FF385C;
+}
+*/
+
+.header-center {
+  flex: auto; /* Tomará el espacio necesario */
+  display: flex;
+  justify-content: center; /* Centrar la barra de búsqueda */
+  align-items: center;
+  height: 48px; /* Altura de la barra de búsqueda */
+  border: 1px solid #DDDDDD;
+  border-radius: 24px; /* Mitad de la altura para ser totalmente redondeado */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease-in-out;
+  background-color: #fff;
+  padding: 0 8px; /* Padding interno para los elementos de la búsqueda */
+}
+
+.header-center:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.search-tab {
+  background: none;
+  border: none;
+  padding: 0 16px; /* Espacio horizontal */
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative; /* Para el pseudo-elemento ::after */
+}
+
+.search-tab.active {
+  /* Airbnb no parece tener un estilo "active" muy prominente aquí, más bien en la barra expandida */
+}
+.search-tab:hover {
+    background-color: #f7f7f7;
+    border-radius: 24px;
+}
+
+
+.search-divider {
+  height: 24px; /* Altura del separador */
+  width: 1px;
+  background-color: #DDDDDD;
+  margin: 0 8px; /* Espacio alrededor del separador */
+}
+
+.search-button-wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 8px; /* Espacio antes del primer texto */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-button-text {
+    font-size: 14px;
+    font-weight: 400; /* Más ligero que los tabs */
+    color: #222222;
+    padding: 0 16px;
+}
+
+.search-button-text.light {
+    color: #717171; /* Texto "Add guests" más claro */
+}
+
+.search-divider-vertical {
+    height: 24px;
+    width: 1px;
+    background-color: #EBEBEB;
+    /* No margin needed if text has padding */
+}
+
+.search-icon-background {
+    background-color: #FF385C;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px; /* Espacio desde el último texto */
+}
+
+.search-icon-background svg {
+    stroke: white;
+}
+
+
+.header-right {
+  flex: 1; /* Para empujar el centro */
+  display: flex;
+  justify-content: flex-end; /* Alinea los items a la derecha */
+  align-items: center;
+}
+
+.host-button, .icon-button, .user-menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600; /* Semibold */
+  color: #222222;
+  border-radius: 22px; /* Bordes redondeados para el hover */
+  transition: background-color 0.2s ease;
+  margin-left: 8px; /* Espacio entre botones */
+}
+
+.host-button:hover, .icon-button:hover {
+  background-color: #f7f7f7;
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  border: 1px solid #DDDDDD !important; /* Borde específico para este botón */
+  padding: 5px 5px 5px 12px !important; /* Padding específico */
+  transition: box-shadow 0.2s ease; /* Sombra en hover */
+}
+
+.user-menu-button:hover {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  background-color: #fff; /* Evitar el gris de otros botones */
+}
+
+.user-menu-button svg:first-child { /* MenuIcon */
+  margin-right: 12px; /* Espacio entre icono de menú e icono de usuario */
+}
+/* UserIcon ya tiene su estilo fill desde el componente SVG */

@@ -1,0 +1,54 @@
+/* Estilos para el Hero */
+.hero-section {
+  padding: 40px 80px; /* Padding similar al header/categories */
+  background-color: #f7f7f7; /* Un fondo suave, podría ser una imagen */
+  text-align: left; /* Airbnb tiende a alinear a la izquierda el texto en secciones así */
+  /* border-bottom: 1px solid #ebebeb; */ /* Opcional, si se necesita separación */
+}
+
+.hero-content h1 {
+  font-size: 32px; /* Tamaño grande para el título principal */
+  font-weight: 700; /* Bold */
+  color: #222222;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #484848; /* Un gris un poco más oscuro que el texto secundario normal */
+  margin-bottom: 24px;
+  max-width: 600px; /* Limitar el ancho del párrafo para mejor legibilidad */
+}
+
+/* Estilos para un botón CTA si se añade:
+.hero-cta-button {
+  background-color: #FF385C;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hero-cta-button:hover {
+  background-color: #e01c4f; // Un rojo más oscuro para el hover
+}
+*/
+
+/* Si quisiéramos una imagen de fondo:
+.hero-section {
+  background-image: url('path/to/your/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white; // El texto necesitaría ser blanco o tener un overlay oscuro detrás
+}
+
+.hero-section .hero-content h1,
+.hero-section .hero-content p {
+  color: white; // Asegurar que el texto sea legible sobre la imagen
+}
+*/
