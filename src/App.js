@@ -12,10 +12,12 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
       }
     };
 
@@ -25,8 +27,22 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    
+    // Validar que al menos se haya ingresado un término de búsqueda
+    if (!searchData.space && !searchData.location && !searchData.date) {
+      alert('Por favor, ingresa al menos un criterio de búsqueda');
+      return;
+    }
+    
     console.log('Búsqueda:', searchData);
-    alert(`Búsqueda: ${searchData.space} en ${searchData.location}`);
+    
+    // Crear mensaje de búsqueda más informativo
+    let searchMessage = 'Búsqueda realizada:';
+    if (searchData.space) searchMessage += `\n- Espacio: ${searchData.space}`;
+    if (searchData.location) searchMessage += `\n- Ubicación: ${searchData.location}`;
+    if (searchData.date) searchMessage += `\n- Fecha: ${searchData.date}`;
+    
+    alert(searchMessage);
   };
 
   const handleInputChange = (e) => {
@@ -85,38 +101,57 @@ function App() {
   const features = [
     {
       title: 'Búsqueda Simple',
-      description: 'Encuentra espacios por tipo, ubicación y fecha disponible.'
+      description: 'Encuentra espacios por tipo, ubicación y fecha disponible de forma rápida y sencilla.'
     },
     {
       title: 'Reserva Directa',
-      description: 'Confirmación inmediata sin intermediarios ni comisiones ocultas.'
+      description: 'Confirmación inmediata sin intermediarios ni comisiones ocultas. Proceso 100% transparente.'
     },
     {
       title: 'Acceso Garantizado',
-      description: 'Espacios verificados con acceso seguro y anfitrión disponible.'
+      description: 'Espacios verificados con acceso seguro y anfitrión disponible durante tu reserva.'
     }
   ];
 
   const handleSpaceClick = (space) => {
-    console.log('Espacio seleccionado:', space.name);
-    alert(`Ver detalles: ${space.name} - ${space.price}`);
+    console.log('Espacio seleccionado:', space);
+    alert(`Detalles del espacio:\n\n${space.name}\n${space.description}\n\nPrecio: ${space.price}\nCategoría: ${space.category}`);
+  };
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const headerHeight = 72;
+      const sectionTop = section.offsetTop - headerHeight;
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
     <div className="App">
       <header>
-        <nav className="container">
-          <div className="logo">SpaceHub</div>
-          <ul className="nav-links">
-            <li><a href="#espacios">Espacios</a></li>
-            <li><a href="#como-funciona">Cómo funciona</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-          <div className="auth-buttons">
-            <button className="btn btn-outline">Iniciar sesión</button>
-            <button className="btn btn-primary">Registrarse</button>
-          </div>
-        </nav>
+        <div className="container">
+          <nav>
+            <div className="logo">SpaceHub</div>
+            <ul className="nav-links">
+              <li><a href="#espacios" onClick={(e) => handleNavClick(e, 'espacios')}>Espacios</a></li>
+              <li><a href="#como-funciona" onClick={(e) => handleNavClick(e, 'como-funciona')}>Cómo funciona</a></li>
+              <li><a href="#contacto" onClick={(e) => handleNavClick(e, 'contacto')}>Contacto</a></li>
+            </ul>
+            <div className="auth-buttons">
+              <button className="btn btn-outline" onClick={() => alert('Funcionalidad de inicio de sesión')}>
+                Iniciar sesión
+              </button>
+              <button className="btn btn-primary" onClick={() => alert('Funcionalidad de registro')}>
+                Registrarse
+              </button>
+            </div>
+          </nav>
+        </div>
       </header>
 
       <main>
@@ -128,30 +163,41 @@ function App() {
               
               <form className="search-form" onSubmit={handleSearch}>
                 <div className="search-group">
-                  <input 
-                    type="text" 
-                    name="space"
-                    placeholder="Tipo de espacio"
-                    value={searchData.space}
-                    onChange={handleInputChange}
-                    className="search-input"
-                  />
-                  <input 
-                    type="text" 
-                    name="location"
-                    placeholder="Ubicación"
-                    value={searchData.location}
-                    onChange={handleInputChange}
-                    className="search-input"
-                  />
-                  <input 
-                    type="date" 
-                    name="date"
-                    value={searchData.date}
-                    onChange={handleInputChange}
-                    className="search-input"
-                  />
-                  <button type="submit" className="search-btn">Buscar</button>
+                  <div className="search-field">
+                    <label className="search-label">Dónde</label>
+                    <input 
+                      type="text" 
+                      name="location"
+                      placeholder="Explora destinos"
+                      value={searchData.location}
+                      onChange={handleInputChange}
+                      className="search-input"
+                    />
+                  </div>
+                  <div className="search-field">
+                    <label className="search-label">Tipo de espacio</label>
+                    <input 
+                      type="text" 
+                      name="space"
+                      placeholder="¿Qué necesitas?"
+                      value={searchData.space}
+                      onChange={handleInputChange}
+                      className="search-input"
+                    />
+                  </div>
+                  <div className="search-field">
+                    <label className="search-label">Fecha</label>
+                    <input 
+                      type="date" 
+                      name="date"
+                      value={searchData.date}
+                      onChange={handleInputChange}
+                      className="search-input"
+                    />
+                  </div>
+                  <button type="submit" className="search-btn">
+                    <span>🔍</span>
+                  </button>
                 </div>
               </form>
             </div>
@@ -208,7 +254,12 @@ function App() {
             <div className="cta-content">
               <h2>¿Tienes un espacio para alquilar?</h2>
               <p>Únete a SpaceHub y empieza a generar ingresos con tu propiedad</p>
-              <button className="btn btn-primary">Registrar espacio</button>
+              <button 
+                className="btn btn-primary"
+                onClick={() => alert('Funcionalidad de registro de espacios')}
+              >
+                Registrar espacio
+              </button>
             </div>
           </div>
         </section>
@@ -220,25 +271,25 @@ function App() {
             <div className="footer-section">
               <h4>SpaceHub</h4>
               <ul>
-                <li><a href="#">Sobre nosotros</a></li>
-                <li><a href="#">Términos</a></li>
-                <li><a href="#">Privacidad</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Sobre nosotros'); }}>Sobre nosotros</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Términos'); }}>Términos</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Privacidad'); }}>Privacidad</a></li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Soporte</h4>
               <ul>
-                <li><a href="#">Centro de ayuda</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Seguridad</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Centro de ayuda'); }}>Centro de ayuda</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Contacto'); }}>Contacto</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Seguridad'); }}>Seguridad</a></li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Anfitriones</h4>
               <ul>
-                <li><a href="#">Alquila tu espacio</a></li>
-                <li><a href="#">Guía para anfitriones</a></li>
-                <li><a href="#">Recursos</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Alquila tu espacio'); }}>Alquila tu espacio</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Guía para anfitriones'); }}>Guía para anfitriones</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); alert('Página: Recursos'); }}>Recursos</a></li>
               </ul>
             </div>
           </div>
