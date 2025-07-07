@@ -1,25 +1,10 @@
 import React from 'react';
 import './Header.css';
 
-// SVGs como componentes de React para mejor manejo y estilización si es necesario
-// Idealmente, estos SVGs se obtendrían de una librería de iconos o se optimizarían.
-
-const AirbnbLogo = () => (
-  <svg
-    viewBox="0 0 32 32"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-label="Airbnb homepage" // Mejor accesibilidad
-    role="img"
-    focusable="false"
-    style={{ height: '32px', width: 'auto', display: 'block', fill: 'currentColor' }} // Usar currentColor para heredar color
-  >
-    <path
-      d="M16 1c2.008 0 3.937.305 5.765.903C12.843 2.111 3.333 7.25 3.333 16.046c0 8.138 8.062 12.887 12.667 12.887 4.604 0 12.667-4.75 12.667-12.887C28.667 7.25 19.157 2.111 10.235.903 12.063.305 13.992 1 16 1zm0 2.887c-6.094 0-10.781 4.225-10.781 10.78s4.687 10.78 10.781 10.78 10.781-4.226 10.781-10.78S22.094 3.887 16 3.887zm0 4.85c3.309 0 6.047 2.612 6.047 5.93s-2.738 5.93-6.047 5.93-6.047-2.612-6.047-5.93 2.738-5.93 6.047-5.93z"
-      fill="#FF385C" // Color rojo característico de Airbnb
-    ></path>
-  </svg>
+// Componente de Logo para "Bello"
+const BelloLogo = () => (
+  <span className="bello-logo-text">Bello</span>
 );
-
 
 const SearchIcon = () => (
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '12px', width: '12px', stroke: 'currentColor', strokeWidth: '5.33333', overflow: 'visible' }}>
@@ -40,8 +25,7 @@ const MenuIcon = () => (
 );
 
 const UserIcon = () => (
-  // Usando un SVG de perfil más genérico y común
-  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display: 'block', height: '22px', width: '22px', fill: '#717171'}}> {/* Color gris estándar para iconos de perfil */}
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display: 'block', height: '22px', width: '22px', fill: '#717171'}}>
     <path d="M16 15.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 1.5c-5.05 0-9.22 3.081-11.055 7.332A13.906 13.906 0 0 0 16 29.999a13.906 13.906 0 0 0 11.055-5.667C25.22 19.081 21.05 17 16 17z"></path>
   </svg>
 );
@@ -51,26 +35,24 @@ function Header() {
   return (
     <header className="header">
       <div className="header-left">
-        <a href="/" aria-label="Airbnb homepage" className="logo-link"> {/* Enlace en el logo */}
-          <AirbnbLogo />
-          {/* El texto "airbnb" a veces está presente, a veces no. Se puede omitir para un look más limpio como el actual de Airbnb. */}
-          {/* <span className="logo-text">airbnb</span> */}
+        <a href="/" aria-label="Bello homepage" className="logo-link">
+          <BelloLogo />
         </a>
       </div>
 
       <div className="header-center">
-        {/* Esta es la barra de búsqueda simplificada, el real es más complejo */}
-        <button className="search-tab active">Stays</button>
+        {/* TODO: Adaptar estos botones a "Bello" (ej. "Espacios", "Experiencias", "Eventos Online") */}
+        <button className="search-tab active">Espacios</button>
         <span className="search-divider"></span>
-        <button className="search-tab">Experiences</button>
-        <span className="search-divider"></span>
-        <button className="search-tab">Online Experiences</button>
+        <button className="search-tab">Experiencias</button>
+        {/* <span className="search-divider"></span>
+        <button className="search-tab">Online Experiences</button> */}
         <button className="search-button-wrapper">
-          <span className="search-button-text">Anywhere</span> {/* Placeholder */}
+          <span className="search-button-text">Cualquier lugar</span> {/* Placeholder */}
           <span className="search-divider-vertical"></span>
-          <span className="search-button-text">Any week</span> {/* Placeholder */}
+          <span className="search-button-text">Cualquier semana</span> {/* Placeholder */}
           <span className="search-divider-vertical"></span>
-          <span className="search-button-text light">Add guests</span> {/* Placeholder */}
+          <span className="search-button-text light">¿Cuántos?</span> {/* Placeholder */}
           <div className="search-icon-background">
             <SearchIcon />
           </div>
@@ -78,11 +60,12 @@ function Header() {
       </div>
 
       <div className="header-right">
-        <button className="host-button">Airbnb your home</button>
-        <button className="icon-button" aria-label="Choose a language and currency">
+        {/* TODO: Cambiar "Airbnb your home" a algo como "Ofrece tu espacio" */}
+        <button className="host-button">Ofrece tu espacio</button>
+        <button className="icon-button" aria-label="Elige idioma y moneda">
           <GlobeIcon />
         </button>
-        <button className="user-menu-button" aria-label="Main navigation menu">
+        <button className="user-menu-button" aria-label="Menú de navegación principal">
           <MenuIcon />
           <UserIcon />
         </button>

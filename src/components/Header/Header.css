@@ -1,50 +1,48 @@
-/* Estilos para el Header */
+/* Estilos para el Header de "Bello" */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 80px; /* Airbnb usa padding horizontal grande, vertical puede ser 0 si la altura es fija */
-  border-bottom: 1px solid #ebebeb;
-  background-color: #ffffff;
+  padding: 0 80px;
+  border-bottom: 1px solid #e0e0e0; /* Un borde ligeramente más suave para #f2f2f2 */
+  background-color: #ffffff; /* Header blanco para contraste con fondo #f2f2f2 */
   position: sticky;
   top: 0;
-  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  z-index: 1000;
   height: 80px;
-  box-sizing: border-box; /* Incluir padding y border en la altura total */
+  box-sizing: border-box;
 }
 
 .header-left {
-  flex: 1; /* Para empujar el centro */
+  flex: 1;
   display: flex;
   align-items: center;
 }
 
 .logo-link {
-  display: inline-block; /* Para que el enlace tome el tamaño del SVG */
-  color: #FF385C; /* Color del logo de Airbnb */
+  text-decoration: none;
 }
 
-/* No se usa logo-text por ahora, pero si se añade:
-.logo-text {
-  font-size: 22px;
+.bello-logo-text {
+  font-size: 28px; /* Tamaño del logo "Bello" */
   font-weight: bold;
-  margin-left: 8px;
-  color: #FF385C;
+  color: #333333; /* Color principal de texto */
+  /* Podríamos añadir una fuente específica para el logo si quisiéramos */
 }
-*/
+
 
 .header-center {
-  flex: auto; /* Tomará el espacio necesario */
+  flex: auto;
   display: flex;
-  justify-content: center; /* Centrar la barra de búsqueda */
+  justify-content: center;
   align-items: center;
-  height: 48px; /* Altura de la barra de búsqueda */
-  border: 1px solid #DDDDDD;
-  border-radius: 24px; /* Mitad de la altura para ser totalmente redondeado */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+  height: 48px;
+  border: 1px solid #cccccc; /* Borde más visible sobre fondo claro */
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
   transition: box-shadow 0.2s ease-in-out;
   background-color: #fff;
-  padding: 0 8px; /* Padding interno para los elementos de la búsqueda */
+  padding: 0 8px;
 }
 
 .header-center:hover {
@@ -54,37 +52,37 @@
 .search-tab {
   background: none;
   border: none;
-  padding: 0 16px; /* Espacio horizontal */
+  padding: 0 16px;
   font-size: 14px;
   font-weight: 600;
-  color: #222222;
+  color: #333333;
   cursor: pointer;
   height: 100%;
   display: flex;
   align-items: center;
-  position: relative; /* Para el pseudo-elemento ::after */
+  position: relative;
 }
 
 .search-tab.active {
-  /* Airbnb no parece tener un estilo "active" muy prominente aquí, más bien en la barra expandida */
+  /* Se podría añadir un subrayado o un color de texto diferente para el tab activo */
 }
 .search-tab:hover {
-    background-color: #f7f7f7;
+    background-color: #f0f0f0; /* Un hover ligeramente más oscuro que #f2f2f2 */
     border-radius: 24px;
 }
 
 
 .search-divider {
-  height: 24px; /* Altura del separador */
+  height: 24px;
   width: 1px;
-  background-color: #DDDDDD;
-  margin: 0 8px; /* Espacio alrededor del separador */
+  background-color: #cccccc;
+  margin: 0 8px;
 }
 
 .search-button-wrapper {
     display: flex;
     align-items: center;
-    padding-left: 8px; /* Espacio antes del primer texto */
+    padding-left: 8px;
     background: none;
     border: none;
     cursor: pointer;
@@ -92,42 +90,41 @@
 
 .search-button-text {
     font-size: 14px;
-    font-weight: 400; /* Más ligero que los tabs */
-    color: #222222;
+    font-weight: 400;
+    color: #333333;
     padding: 0 16px;
 }
 
 .search-button-text.light {
-    color: #717171; /* Texto "Add guests" más claro */
+    color: #666666; /* Un gris más claro para texto secundario */
 }
 
 .search-divider-vertical {
     height: 24px;
     width: 1px;
-    background-color: #EBEBEB;
-    /* No margin needed if text has padding */
+    background-color: #e0e0e0;
 }
 
 .search-icon-background {
-    background-color: #FF385C;
+    background-color: #333333; /* Botón de búsqueda con color principal */
     border-radius: 50%;
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 8px; /* Espacio desde el último texto */
+    margin-left: 8px;
 }
 
 .search-icon-background svg {
-    stroke: white;
+    stroke: #f2f2f2; /* Icono claro sobre fondo oscuro */
 }
 
 
 .header-right {
-  flex: 1; /* Para empujar el centro */
+  flex: 1;
   display: flex;
-  justify-content: flex-end; /* Alinea los items a la derecha */
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -137,31 +134,34 @@
   cursor: pointer;
   padding: 12px;
   font-size: 14px;
-  font-weight: 600; /* Semibold */
-  color: #222222;
-  border-radius: 22px; /* Bordes redondeados para el hover */
+  font-weight: 600;
+  color: #333333;
+  border-radius: 22px;
   transition: background-color 0.2s ease;
-  margin-left: 8px; /* Espacio entre botones */
+  margin-left: 8px;
 }
 
 .host-button:hover, .icon-button:hover {
-  background-color: #f7f7f7;
+  background-color: #e9e9e9; /* Un hover más sutil sobre #f2f2f2 */
 }
 
 .user-menu-button {
   display: flex;
   align-items: center;
-  border: 1px solid #DDDDDD !important; /* Borde específico para este botón */
-  padding: 5px 5px 5px 12px !important; /* Padding específico */
-  transition: box-shadow 0.2s ease; /* Sombra en hover */
+  border: 1px solid #cccccc !important;
+  padding: 5px 5px 5px 12px !important;
+  transition: box-shadow 0.2s ease;
 }
 
 .user-menu-button:hover {
-  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-  background-color: #fff; /* Evitar el gris de otros botones */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+  background-color: #fff;
 }
 
-.user-menu-button svg:first-child { /* MenuIcon */
-  margin-right: 12px; /* Espacio entre icono de menú e icono de usuario */
+.user-menu-button svg:first-child {
+  margin-right: 12px;
 }
-/* UserIcon ya tiene su estilo fill desde el componente SVG */
+
+.user-menu-button svg { /* Para el icono de usuario en sí */
+  fill: #717171; /* Mantenemos el gris para el icono de usuario placeholder */
+}

@@ -1,41 +1,39 @@
-/* Estilos para el Footer */
+/* Estilos para el Footer de "Bello" */
 .footer-container {
-  background-color: #f7f7f7; /* Fondo gris claro como Airbnb */
-  border-top: 1px solid #dddddd;
-  padding: 48px 80px; /* Padding generoso arriba/abajo y a los lados */
-  color: #222222; /* Color de texto principal oscuro */
+  background-color: #e0e0e0; /* Un gris un poco más oscuro para diferenciar del fondo #f2f2f2 */
+  border-top: 1px solid #cccccc;
+  padding: 48px 80px;
+  color: #333333; /* Color de texto principal */
   font-size: 14px;
+  font-family: Arial, sans-serif; /* Asegurar tipografía */
 }
 
 .footer-content {
-  max-width: 1280px; /* Ancho máximo del contenido, similar a Airbnb */
-  margin: 0 auto; /* Centrar el contenido */
-}
-
-.footer-section {
-  /* No se necesita display flex aquí si las columnas se manejan individualmente */
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .links-section {
   display: flex;
-  justify-content: space-between; /* Distribuye las columnas */
-  padding-bottom: 48px; /* Espacio antes de la sección inferior */
-  border-bottom: 1px solid #dddddd; /* Línea divisoria */
-  margin-bottom: 24px; /* Espacio después de la línea divisoria */
-  flex-wrap: wrap; /* Para que las columnas se ajusten en pantallas pequeñas */
+  justify-content: space-between;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #cccccc; /* Borde más visible */
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .footer-column {
-  min-width: 200px; /* Ancho mínimo para cada columna */
-  margin-bottom: 24px; /* Espacio si se envuelven */
-  padding-right: 24px; /* Espacio entre columnas */
+  min-width: 200px;
+  margin-bottom: 24px;
+  padding-right: 24px;
 }
 
 .footer-column h3 {
-  font-size: 14px; /* Mismo tamaño que el texto base, pero en negrita */
-  font-weight: 600; /* Semibold */
+  font-size: 14px;
+  font-weight: bold; /* Hacemos los títulos un poco más destacados */
   margin-top: 0;
   margin-bottom: 16px;
+  color: #333333;
 }
 
 .footer-column ul {
@@ -45,12 +43,12 @@
 }
 
 .footer-column li {
-  margin-bottom: 12px; /* Espacio entre enlaces */
+  margin-bottom: 12px;
 }
 
 .footer-column a {
   text-decoration: none;
-  color: #222222; /* Color de enlace estándar */
+  color: #333333;
   transition: text-decoration 0.2s ease;
 }
 
@@ -62,36 +60,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+  flex-wrap: wrap;
 }
 
 .bottom-left {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Para que los enlaces se ajusten */
+  flex-wrap: wrap;
 }
 
 .bottom-left span,
 .bottom-left a {
-  margin-right: 16px; /* Espacio entre items */
-  margin-bottom: 8px; /* Espacio si se envuelven */
-  white-space: nowrap; /* Evitar que se rompan los enlaces */
+  margin-right: 16px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  color: #333333; /* Asegurar color de texto */
 }
 .bottom-left a:last-of-type {
     margin-right: 0;
 }
 
-
 .bottom-left a {
   text-decoration: none;
-  color: #222222;
 }
 .bottom-left a:hover {
   text-decoration: underline;
 }
-
-/* Placeholder para el icono de "Your Privacy Choices" si se añade */
-/* .privacy-choices-icon { ... } */
 
 .bottom-right {
   display: flex;
@@ -102,15 +96,15 @@
 .footer-button {
   background: none;
   border: none;
-  color: #222222;
+  color: #333333;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 600; /* Semibold */
-  padding: 8px 0; /* Solo padding vertical si no hay borde */
-  margin-left: 24px; /* Espacio entre botones */
+  font-weight: 600;
+  padding: 8px 0;
+  margin-left: 24px;
   display: flex;
   align-items: center;
-  margin-bottom: 8px; /* Espacio si se envuelven */
+  margin-bottom: 8px;
 }
 .footer-button:first-child {
     margin-left: 0;
@@ -119,6 +113,10 @@
 .footer-button:hover {
   text-decoration: underline;
 }
+.footer-button svg { /* Para el GlobeIcon */
+    fill: #333333;
+}
+
 
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
@@ -130,17 +128,17 @@
     align-items: flex-start;
   }
   .footer-column {
-    width: 100%; /* Columnas ocupan todo el ancho */
+    width: 100%;
     padding-right: 0;
     margin-bottom: 32px;
   }
   .bottom-right {
     margin-top: 16px;
-    width: 100%; /* Botones ocupan todo el ancho */
+    width: 100%;
     justify-content: flex-start;
   }
   .footer-button {
     margin-left: 0;
-    margin-right: 24px; /* Espacio entre botones si están en la misma línea */
+    margin-right: 24px;
   }
 }
