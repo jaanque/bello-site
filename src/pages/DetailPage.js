@@ -9,7 +9,8 @@ import ListingDetails from '../components/DetailPage/ListingDetails/ListingDetai
 import ReviewsSection from '../components/DetailPage/ReviewsSection/ReviewsSection';
 import LocationSection from '../components/DetailPage/LocationSection/LocationSection';
 // Datos de ejemplo (idealmente vendrían de un fetch o estado global)
-import { sampleListings } from '../components/HomePage/ListingsGrid/ListingsGrid'; // Reutilizar datos de ejemplo
+import sampleListings from '../components/HomePage/ListingsGrid/ListingsGrid';
+
 
 const DetailPage = () => {
   let { listingId } = useParams();
