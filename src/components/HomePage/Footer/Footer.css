@@ -1,0 +1,78 @@
+/* Footer.css */
+.footer {
+  background-color: #000000; /* Negro */
+  color: #ffffff; /* Blanco */
+  padding: 40px 20px;
+  border-top: 1px solid #333333; /* Borde gris oscuro */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que las secciones se ajusten en pantallas pequeñas */
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 30px auto; /* Centrar y añadir margen inferior */
+  gap: 20px; /* Espacio entre secciones */
+}
+
+.footer-section {
+  flex: 1; /* Distribuir el espacio equitativamente */
+  min-width: 200px; /* Ancho mínimo para cada sección antes de envolver */
+  margin-bottom: 20px; /* Espacio si se envuelven */
+}
+
+.footer-section h4 {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  color: #f0f0f0; /* Un blanco ligeramente menos brillante para los títulos */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #cccccc; /* Gris claro para los enlaces */
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff; /* Blanco al pasar el mouse */
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #222222; /* Línea divisoria más sutil */
+  font-size: 0.85em;
+  color: #aaaaaa; /* Color de texto aún más claro para el copyright */
+}
+
+/* Media queries para mejorar la responsividad del footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Apilar secciones en pantallas más pequeñas */
+    align-items: center; /* Centrar el contenido de las secciones */
+    text-align: center;
+  }
+
+  .footer-section {
+    min-width: 100%; /* Cada sección ocupa todo el ancho */
+    margin-bottom: 30px;
+  }
+
+  .footer-section h4 {
+    margin-bottom: 10px;
+  }
+}

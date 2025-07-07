@@ -1,0 +1,49 @@
+/* ListingsGrid.css */
+.listings-grid-container {
+  padding: 20px;
+  background-color: #0a0a0a; /* Fondo muy oscuro para el contenedor del grid */
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid responsivo */
+  gap: 20px; /* Espacio entre las tarjetas */
+  max-width: 1600px; /* Ancho máximo del grid */
+  margin: 0 auto; /* Centrar el grid */
+}
+
+/* Media queries para ajustar el número de columnas en diferentes tamaños de pantalla */
+
+/* Para tablets y pantallas pequeñas */
+@media (max-width: 992px) {
+  .listings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Para móviles grandes */
+@media (max-width: 768px) {
+  .listings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  .listings-grid-container {
+    padding: 15px;
+  }
+}
+
+/* Para móviles pequeños */
+@media (max-width: 576px) {
+  .listings-grid {
+    /* En móviles muy pequeños, podrías querer una sola columna */
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+   .listings-grid-container {
+    padding: 10px;
+  }
+  /* Ajustar el ListingCard para que ocupe todo el ancho si es necesario */
+  .listing-card {
+    max-width: none; /* Permitir que la tarjeta se expanda */
+  }
+}

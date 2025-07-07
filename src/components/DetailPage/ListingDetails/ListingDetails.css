@@ -1,0 +1,43 @@
+/* ListingDetails.css */
+.listing-details-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0; /* Espacio vertical alrededor de esta sección */
+  gap: 20px; /* Espacio entre el contenido principal y la barra lateral */
+  border-bottom: 1px solid #282828; /* Línea divisoria inferior */
+}
+
+.main-content-area {
+  flex: 2; /* Ocupa más espacio, por ejemplo, 2/3 del ancho */
+  /* No necesita min-width aquí ya que el flex-basis implícito lo manejará */
+}
+
+.sidebar-area {
+  flex: 1; /* Ocupa menos espacio, por ejemplo, 1/3 del ancho */
+  min-width: 320px; /* Asegura que el booking box no se comprima demasiado */
+}
+
+/* Responsive: Cuando la pantalla es demasiado estrecha, apilar los elementos */
+@media (max-width: 992px) { /* Ajusta este breakpoint según sea necesario */
+  .listing-details-container {
+    flex-direction: column; /* Apila el contenido principal y la barra lateral */
+  }
+
+  .main-content-area {
+    flex: none; /* Resetea el flex grow/shrink */
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .sidebar-area {
+    flex: none;
+    width: 100%;
+    min-width: auto; /* Resetea el min-width */
+    margin-top: 20px; /* Espacio cuando se apila debajo */
+  }
+}
+
+@media (max-width: 768px) {
+    .listing-details-container {
+        padding: 20px 0;
+    }
+}

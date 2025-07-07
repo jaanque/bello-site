@@ -1,0 +1,86 @@
+/* MainInfo.css */
+.main-info-section {
+  padding-right: 30px; /* Espacio para separarlo del BookingBox en layout de escritorio */
+  color: #e0e0e0; /* Texto principal un poco menos brillante que el blanco puro */
+}
+
+.host-intro h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #ffffff; /* Blanco para el título principal */
+  margin-bottom: 8px;
+}
+
+.specs {
+  font-size: 1em;
+  color: #c0c0c0; /* Gris claro para las especificaciones */
+  margin-bottom: 20px;
+}
+
+.specs span {
+  margin-right: 8px;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #282828; /* Color de la línea divisoria */
+  margin: 25px 0;
+}
+
+.description-section h3,
+.amenities-section h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #f0f0f0; /* Blanco un poco menos brillante para subtítulos */
+  margin-bottom: 15px;
+}
+
+.description-section p {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #b0b0b0; /* Gris para el cuerpo del texto */
+  white-space: pre-line; /* Respeta saltos de línea y espacios múltiples */
+}
+
+.amenities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 columnas, responsive */
+  gap: 15px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+  color: #c0c0c0;
+}
+
+.amenity-icon {
+  font-size: 1.2em; /* Ajusta el tamaño del emoji/icono */
+  margin-right: 10px;
+  color: #ffffff; /* Iconos en blanco */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Cuando el BookingBox se mueva debajo */
+  .main-info-section {
+    padding-right: 0; /* Eliminar padding cuando no hay nada al lado */
+  }
+}
+
+@media (max-width: 768px) {
+  .host-intro h2 {
+    font-size: 1.3em;
+  }
+  .description-section h3,
+  .amenities-section h3 {
+    font-size: 1.1em;
+  }
+  .amenities-list {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+  }
+}

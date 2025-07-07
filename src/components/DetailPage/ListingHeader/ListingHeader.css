@@ -1,0 +1,89 @@
+/* ListingHeader.css */
+.listing-header-container {
+  padding: 20px 0;
+  border-bottom: 1px solid #333333; /* Separador gris oscuro */
+  background-color: #0f0f0f; /* Fondo ligeramente más claro que el body para destacar */
+  color: #ffffff;
+}
+
+.listing-title {
+  font-size: 1.8em; /* Tamaño grande para el título */
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #f5f5f5; /* Blanco brillante */
+}
+
+.listing-subheader {
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+  color: #cccccc; /* Gris claro para sub-información */
+  margin-bottom: 15px;
+}
+
+.listing-subheader .separator {
+  margin: 0 8px;
+}
+
+.listing-subheader .rating-info,
+.listing-subheader .location-info {
+  /* Podrías añadir iconos aquí si lo deseas */
+}
+
+.listing-subheader .location-info:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.listing-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #555555; /* Borde gris medio */
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #222222; /* Fondo gris oscuro al pasar el mouse */
+  border-color: #777777; /* Borde más claro al pasar el mouse */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .listing-title {
+    font-size: 1.6em;
+  }
+
+  .listing-subheader {
+    font-size: 0.9em;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+  }
+
+  .listing-actions {
+    /* Podrías hacer que los botones ocupen todo el ancho o se apilen */
+  }
+}
+
+@media (max-width: 480px) {
+  .listing-header-container {
+    padding: 15px 0;
+  }
+  .listing-title {
+    font-size: 1.4em;
+  }
+  .listing-subheader span{
+     margin-bottom: 5px; /* Espacio si se envuelven */
+  }
+  .action-btn {
+    padding: 6px 12px;
+    font-size: 0.85em;
+  }
+}

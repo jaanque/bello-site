@@ -1,0 +1,115 @@
+/* ImageGallery.css */
+.image-gallery-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Columna principal más ancha, columna de miniaturas más estrecha */
+  grid-template-rows: auto; /* Altura basada en el contenido */
+  gap: 8px; /* Espacio entre las imágenes */
+  padding: 10px 0;
+  background-color: #0a0a0a; /* Fondo muy oscuro */
+  border-radius: 12px; /* Bordes redondeados para el contenedor */
+  overflow: hidden; /* Para que las imágenes no se salgan de los bordes redondeados */
+  max-height: 500px; /* Limitar la altura máxima de la galería */
+}
+
+.main-image-wrapper {
+  grid-column: 1 / 2; /* Ocupa la primera columna */
+  grid-row: 1 / 3; /* Ocupa dos filas si las miniaturas se apilan */
+  overflow: hidden;
+  border-radius: 8px 0 0 8px; /* Redondeo solo en la esquina izquierda */
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el espacio sin deformar */
+  display: block;
+  background-color: #000000; /* Fondo negro si la imagen no carga */
+}
+
+.thumbnail-grid {
+  grid-column: 2 / 3; /* Ocupa la segunda columna */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos miniaturas por fila */
+  grid-template-rows: repeat(2, 1fr); /* Dos filas de miniaturas */
+  gap: 8px;
+  position: relative; /* Para el botón de "ver todas" */
+}
+
+.thumbnail-wrapper {
+  overflow: hidden;
+  position: relative; /* Para el botón si se coloca encima */
+}
+
+.thumbnail-wrapper:first-child {
+  border-radius: 0 8px 0 0; /* Redondeo superior derecha */
+}
+.thumbnail-wrapper:nth-child(2) {
+ /* No necesita redondeo específico si está al lado */
+}
+.thumbnail-wrapper:nth-child(3) {
+ /* No necesita redondeo específico si está al lado */
+}
+.thumbnail-wrapper:last-child {
+  border-radius: 0 0 8px 0; /* Redondeo inferior derecha */
+}
+
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background-color: #000000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.thumbnail-image:hover {
+  transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+}
+
+.show-all-photos-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.show-all-photos-btn:hover {
+  background-color: rgba(20, 20, 20, 0.9);
+}
+
+/* Adaptación para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .image-gallery-container {
+    grid-template-columns: 1fr; /* Una sola columna */
+    max-height: none; /* Permitir que la altura se ajuste */
+  }
+
+  .main-image-wrapper {
+    grid-row: auto; /* Resetear la expansión de fila */
+    height: 300px; /* Altura fija para la imagen principal en móviles */
+    border-radius: 8px; /* Redondear todas las esquinas */
+  }
+
+  .thumbnail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Miniaturas responsivas */
+    margin-top: 8px;
+  }
+  .thumbnail-wrapper,
+  .thumbnail-wrapper:first-child,
+  .thumbnail-wrapper:last-child {
+    border-radius: 6px; /* Redondear todas las esquinas de las miniaturas */
+  }
+}
+
+@media (max-width: 480px) {
+    .main-image-wrapper {
+        height: 250px;
+    }
+}
