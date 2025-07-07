@@ -1,0 +1,63 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000000; /* Negro */
+  color: #ffffff; /* Blanco */
+  border-bottom: 1px solid #333333; /* Gris oscuro para borde sutil */
+}
+
+.navbar-logo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-search input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #cccccc; /* Borde gris claro */
+  background-color: #1c1c1c; /* Fondo gris muy oscuro para inputs */
+  color: #ffffff; /* Texto blanco */
+  border-radius: 20px; /* Bordes redondeados como en Airbnb */
+}
+
+.navbar-search input[type="text"]::placeholder {
+  color: #bbbbbb; /* Color de placeholder gris claro */
+}
+
+.navbar-search button {
+  padding: 8px 15px;
+  background-color: #ffffff; /* Botón blanco */
+  color: #000000; /* Texto negro */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.navbar-search button:hover {
+  background-color: #e0e0e0; /* Blanco un poco más oscuro al pasar el mouse */
+}
+
+.navbar-usermenu button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.navbar-usermenu button:hover {
+  background-color: #333333; /* Fondo gris oscuro al pasar el mouse */
+}

@@ -1,0 +1,79 @@
+/* ListingCard.css */
+.listing-card-link {
+  text-decoration: none; /* Quitar subrayado del Link */
+  color: inherit; /* Heredar color de texto para que no sea azul por defecto */
+  display: block; /* Para que ocupe el espacio del grid item */
+}
+
+.listing-card {
+  width: 100%; /* Ajustar al contenedor del grid */
+  /* max-width: 320px; Ya no es necesario aquí si el grid lo controla */
+  border: 1px solid #333333; /* Borde gris oscuro */
+  border-radius: 12px; /* Bordes redondeados */
+  overflow: hidden; /* Para que la imagen no se salga de los bordes redondeados */
+  background-color: #101010; /* Fondo de tarjeta muy oscuro */
+  color: #ffffff; /* Texto blanco */
+  /* margin-bottom: 20px; El gap del grid se encarga de esto */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  height: 100%; /* Para que todas las tarjetas en una fila tengan la misma altura si el contenido varía */
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05); /* Sombra blanca muy sutil */
+}
+
+.listing-image {
+  width: 100%;
+  height: 200px; /* Altura fija para la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+  display: block; /* Eliminar espacio extra debajo de la imagen */
+  background-color: #000000; /* Fondo negro si la imagen no carga o es transparente */
+}
+
+.listing-info {
+  padding: 15px;
+  flex-grow: 1; /* Para que esta sección ocupe el espacio restante si las tarjetas tienen alturas variables */
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade '...' si el texto es muy largo */
+}
+
+.listing-location {
+  font-size: 0.9em;
+  color: #bbbbbb; /* Gris claro para la ubicación */
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listing-price {
+  font-size: 1em;
+  margin: 0 0 10px 0;
+}
+
+.listing-price strong {
+  font-weight: bold;
+}
+
+.listing-rating {
+  font-size: 0.9em;
+  color: #f0f0f0; /* Un blanco un poco menos brillante para la calificación */
+  margin-top: auto; /* Empuja la calificación al final si hay espacio extra */
+}
+
+.listing-rating span {
+  /* Aquí podrías agregar estilos para los íconos de estrella si los usas */
+}
