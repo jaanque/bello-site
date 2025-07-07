@@ -1,56 +1,56 @@
 /* ImageGallery.css */
 .image-gallery-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Columna principal más ancha, columna de miniaturas más estrecha */
-  grid-template-rows: auto; /* Altura basada en el contenido */
-  gap: 8px; /* Espacio entre las imágenes */
-  padding: 10px 0;
-  background-color: #0a0a0a; /* Fondo muy oscuro */
-  border-radius: 12px; /* Bordes redondeados para el contenedor */
-  overflow: hidden; /* Para que las imágenes no se salgan de los bordes redondeados */
-  max-height: 500px; /* Limitar la altura máxima de la galería */
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); /* Evitar overflow con minmax(0, ...) */
+  grid-template-rows: repeat(2, auto); /* Dos filas de altura automática */
+  gap: 8px;
+  padding: 16px 0; /* Padding vertical para la sección */
+  /* background-color: #0a0a0a; No es necesario si la página ya es oscura */
+  border-radius: 12px; /* Redondeo general del contenedor de la galería */
+  overflow: hidden;
+  max-height: 550px; /* Altura máxima de la galería, Airbnb tiene una altura fija */
 }
 
 .main-image-wrapper {
-  grid-column: 1 / 2; /* Ocupa la primera columna */
-  grid-row: 1 / 3; /* Ocupa dos filas si las miniaturas se apilan */
+  grid-column: 1 / 2;
+  grid-row: 1 / 3; /* La imagen principal ocupa ambas filas */
   overflow: hidden;
-  border-radius: 8px 0 0 8px; /* Redondeo solo en la esquina izquierda */
+  /* El redondeo se aplica a la imagen directamente o a este wrapper si es el más externo de la imagen */
+  border-radius: 12px 0 0 12px; /* Redondeo solo esquinas izquierdas */
+  background-color: #111111; /* Fondo para imagen principal si no carga */
 }
 
 .main-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cubre el espacio sin deformar */
+  object-fit: cover;
   display: block;
-  background-color: #000000; /* Fondo negro si la imagen no carga */
+  cursor: pointer; /* Indicar que se puede hacer clic (para modal de galería) */
 }
 
 .thumbnail-grid {
-  grid-column: 2 / 3; /* Ocupa la segunda columna */
+  grid-column: 2 / 3;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos miniaturas por fila */
-  grid-template-rows: repeat(2, 1fr); /* Dos filas de miniaturas */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr); /* Dos filas para las 4 miniaturas */
   gap: 8px;
-  position: relative; /* Para el botón de "ver todas" */
+  position: relative;
 }
 
 .thumbnail-wrapper {
   overflow: hidden;
-  position: relative; /* Para el botón si se coloca encima */
+  position: relative;
+  background-color: #181818; /* Fondo para miniaturas si no cargan */
 }
-
-.thumbnail-wrapper:first-child {
-  border-radius: 0 8px 0 0; /* Redondeo superior derecha */
+/* Redondeo específico para las esquinas exteriores de las miniaturas */
+.thumbnail-wrapper:nth-child(1) { /* Arriba derecha */
+  border-radius: 0 12px 0 0;
 }
-.thumbnail-wrapper:nth-child(2) {
- /* No necesita redondeo específico si está al lado */
+.thumbnail-wrapper:nth-child(2) { /* Abajo derecha (si solo hay 2 miniaturas en la columna) */
+  /* Este selector es si hay 2x2. La última miniatura es la 4ta. */
 }
-.thumbnail-wrapper:nth-child(3) {
- /* No necesita redondeo específico si está al lado */
-}
-.thumbnail-wrapper:last-child {
-  border-radius: 0 0 8px 0; /* Redondeo inferior derecha */
+.thumbnail-wrapper:nth-child(4) { /* Abajo derecha, en un grid 2x2 de thumbs */
+ border-radius: 0 0 12px 0;
 }
 
 
@@ -59,57 +59,74 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  background-color: #000000;
-  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  transition: filter 0.2s ease-in-out;
 }
 
 .thumbnail-image:hover {
-  transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+  filter: brightness(0.8); /* Oscurecer un poco al pasar el mouse */
 }
+
+.show-all-photos-btn-wrapper { /* Wrapper para posicionar el botón sobre la última miniatura */
+    grid-column: 2 / 3; /* Ocupa la última celda de la segunda columna de miniaturas */
+    grid-row: 2 / 3;    /* Ocupa la última celda de la segunda fila de miniaturas */
+    position: relative; /* Permite posicionar el botón absolutamente dentro */
+    /* Asegurarse que este wrapper tenga el mismo redondeo que su imagen si es la última */
+}
+.show-all-photos-btn-wrapper.bottom-right-rounded {
+    border-radius: 0 0 12px 0;
+    overflow:hidden; /* Para que el botón no se salga del redondeo */
+}
+
 
 .show-all-photos-btn {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(20, 20, 20, 0.9); /* Fondo casi opaco */
   color: #ffffff;
   border: 1px solid #ffffff;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 7px 14px; /* Padding ajustado */
+  border-radius: 8px; /* Bordes redondeados */
   cursor: pointer;
-  font-size: 0.85em;
+  font-size: 0.8em; /* Texto más pequeño */
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  z-index: 10; /* Encima de la imagen */
 }
 
 .show-all-photos-btn:hover {
-  background-color: rgba(20, 20, 20, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 /* Adaptación para pantallas más pequeñas */
-@media (max-width: 768px) {
+@media (max-width: 950px) { /* Breakpoint donde cambia el layout de galería en Airbnb */
   .image-gallery-container {
     grid-template-columns: 1fr; /* Una sola columna */
-    max-height: none; /* Permitir que la altura se ajuste */
+    grid-template-rows: auto; /* Filas automáticas */
+    max-height: none;
+    border-radius: 12px; /* Redondeo general en móvil también */
   }
 
   .main-image-wrapper {
-    grid-row: auto; /* Resetear la expansión de fila */
-    height: 300px; /* Altura fija para la imagen principal en móviles */
-    border-radius: 8px; /* Redondear todas las esquinas */
+    grid-row: auto;
+    height: 350px; /* Altura para imagen principal en móvil */
+    border-radius: 12px; /* Redondear todas las esquinas de la imagen principal */
   }
 
   .thumbnail-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Miniaturas responsivas */
+    grid-template-columns: repeat(2, 1fr); /* 2 miniaturas por fila */
     margin-top: 8px;
+    /* No mostrar todas las miniaturas en móvil, solo la principal o un carrusel (no implementado) */
+    display: none; /* Ocultar miniaturas en layout móvil simple */
   }
-  .thumbnail-wrapper,
-  .thumbnail-wrapper:first-child,
-  .thumbnail-wrapper:last-child {
-    border-radius: 6px; /* Redondear todas las esquinas de las miniaturas */
+  .show-all-photos-btn-wrapper{
+    display: none; /* Ocultar botón también */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
     .main-image-wrapper {
-        height: 250px;
+        height: 280px; /* Más pequeña en móviles muy chicos */
     }
 }

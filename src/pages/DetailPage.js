@@ -1,93 +1,113 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 // Importar los componentes de la página de detalle
-import Navbar from '../components/HomePage/Navbar/Navbar'; // Reutilizamos Navbar
-import Footer from '../components/HomePage/Footer/Footer'; // Reutilizamos Footer
+import Navbar from '../components/HomePage/Navbar/Navbar';
+import Footer from '../components/HomePage/Footer/Footer';
 import ListingHeader from '../components/DetailPage/ListingHeader/ListingHeader';
 import ImageGallery from '../components/DetailPage/ImageGallery/ImageGallery';
 import ListingDetails from '../components/DetailPage/ListingDetails/ListingDetails';
 import ReviewsSection from '../components/DetailPage/ReviewsSection/ReviewsSection';
 import LocationSection from '../components/DetailPage/LocationSection/LocationSection';
-// Idealmente, tendríamos datos de un backend o un store, aquí usaremos placeholders.
+// Datos de ejemplo (idealmente vendrían de un fetch o estado global)
+import { sampleListings } from '../components/HomePage/ListingsGrid/ListingsGrid'; // Reutilizar datos de ejemplo
 
 const DetailPage = () => {
-  let { listingId } = useParams(); // Para obtener el ID del listing de la URL
+  let { listingId } = useParams();
 
-  // Aquí normalmente harías un fetch a una API para obtener los datos del listingId
-  // Por ahora, usaremos datos de ejemplo simulados.
-  const sampleListingData = {
-    id: listingId,
-    name: `Alojamiento de Lujo con Vistas ${listingId}`,
-    rating: 4.92,
-    reviewsCount: 175,
-    location: 'Ciudad Ejemplo, País Ejemplo',
-    images: [ // Podrías tener URLs reales aquí
-      "https://via.placeholder.com/600x400/000000/FFFFFF/?text=Principal+Listing+" + listingId,
-      "https://via.placeholder.com/300x200/111111/EEEEEE/?text=Vista+2",
-      "https://via.placeholder.com/300x200/222222/DDDDDD/?text=Interior+3",
-      "https://via.placeholder.com/300x200/0a0a0a/F0F0F0/?text=Baño+4",
-      "https://via.placeholder.com/300x200/1a1a1a/EAEAEA/?text=Detalle+5",
+  // Encontrar el listing basado en listingId. Convertir listingId a número si es necesario.
+  const currentListing = sampleListings.find(l => l.id.toString() === listingId);
+
+  // Si no se encuentra el listing, mostrar un mensaje o redirigir (no implementado aquí)
+  if (!currentListing) {
+    return (
+        <>
+            <Navbar />
+            <main className="app-content detail-page-content-wrapper">
+                <div style={{ padding: '40px', textAlign: 'center', color: '#fff' }}>
+                    <h2>Alojamiento no encontrado</h2>
+                    <p>No pudimos encontrar el alojamiento que buscas.</p>
+                </div>
+            </main>
+            <Footer />
+        </>
+    );
+  }
+
+  // Simular datos más detallados para la página de detalle, basados en el currentListing
+  const detailedListingData = {
+    ...currentListing, // Incluye id, name, location, price, rating, imageUrl
+    reviewsCount: Math.floor(Math.random() * 200) + 5, // Simular número de reseñas
+    images: [
+      currentListing.imageUrl || `https://via.placeholder.com/600x400/000000/FFFFFF/?text=Principal+${currentListing.id}`,
+      `https://via.placeholder.com/300x200/111111/EEEEEE/?text=Vista+A`,
+      `https://via.placeholder.com/300x200/222222/DDDDDD/?text=Vista+B`,
+      `https://via.placeholder.com/300x200/0a0a0a/F0F0F0/?text=Detalle+C`,
+      `https://via.placeholder.com/300x200/1a1a1a/EAEAEA/?text=Detalle+D`,
     ],
-    host: { name: 'Juan Anfitrión' },
-    type: 'Villa completa',
-    guests: 8,
-    bedrooms: 4,
-    beds: 5,
-    baths: 3,
-    description: `Disfruta de una experiencia inolvidable en esta villa exclusiva (ID: ${listingId}). Ofrece vistas panorámicas, interiores de diseño y todas las comodidades modernas. Perfecta para grupos grandes o familias que buscan lujo y confort. La cocina está totalmente equipada, y hay múltiples áreas de estar y comedor.`,
+    host: { name: 'Anfitrión Ejemplo' },
+    type: currentListing.name.includes('Cabaña') ? 'Cabaña entera' : 'Apartamento completo',
+    guests: Math.floor(Math.random() * 4) + 2,
+    bedrooms: Math.floor(Math.random() * 2) + 1,
+    beds: Math.floor(Math.random() * 2) + 2,
+    baths: Math.floor(Math.random() * 1) + 1,
+    description: `Descubre ${currentListing.name}, un espacio único en ${currentListing.location}. Perfecto para tu próxima escapada, ofreciendo comodidad y estilo. Este lugar (ID: ${currentListing.id}) está cuidadosamente preparado para asegurar una estancia memorable.`,
     amenities: [
-      { name: 'Piscina privada', icon: '🏊' },
-      { name: 'Wi-Fi de alta velocidad', icon: '📶' },
-      { name: 'Jacuzzi', icon: '♨️' },
-      { name: 'Gimnasio', icon: '🏋️' },
-      { name: 'Cine en casa', icon: '🎬' },
+      { name: 'Wi-Fi', icon: '📶' },
+      { name: 'Cocina', icon: '🍳' },
+      { name: 'Aire acondicionado', icon: '❄️' },
+      { name: 'TV', icon: '📺' },
     ],
-    pricePerNight: 350,
-    reviews: [ // Podrías tener un array de objetos de reseña más completo
-      { id: 1, userName: 'Sofia R.', date: 'abril de 2024', rating: 5, text: '¡Espectacular! Mucho mejor de lo que esperábamos. Las fotos no le hacen justicia.' },
-      { id: 2, userName: 'Martin L.', date: 'marzo de 2024', rating: 4, text: 'Muy buena propiedad, aunque un poco alejada del centro. La piscina es fantástica.' },
+    // pricePerNight ya está en currentListing
+    reviews: [
+      { id: 1, userName: 'Alex R.', date: 'mayo de 2024', rating: 5, text: '¡Fantástico! Exactamente como en las fotos. Muy limpio y acogedor.' },
+      { id: 2, userName: 'Maria C.', date: 'abril de 2024', rating: 4, text: 'Buena ubicación y el anfitrión fue amable. El lugar es cómodo.' },
     ],
-    address: `Calle Ficticia 123, Urbanización Sueños, Ciudad Ejemplo`,
-    neighborhoodDescription: 'El vecindario es tranquilo y seguro, con fácil acceso a tiendas locales y restaurantes. Hay un parque cercano ideal para pasear.',
-    mapImageUrl: `https://via.placeholder.com/800x400/050505/FAFAFA/?text=Mapa+de+Villa+${listingId}`
+    address: `${currentListing.location}, Calle Principal 123`,
+    neighborhoodDescription: 'Un barrio vibrante y lleno de vida, con fácil acceso a transporte, tiendas y restaurantes locales. Ideal para explorar la ciudad.',
+    mapImageUrl: `https://via.placeholder.com/800x400/080808/FAFAFA/?text=Mapa+${currentListing.id}`
   };
-
-  // En un caso real, aquí podrías tener lógica para manejar un listingId no encontrado.
 
   return (
     <>
       <Navbar />
-      <main className="app-content detail-page-content">
+      {/* Usar un wrapper para el contenido de la página de detalle para aplicar max-width y padding */}
+      <div className="detail-page-content-wrapper">
         <ListingHeader
-          name={sampleListingData.name}
-          rating={sampleListingData.rating}
-          reviewsCount={sampleListingData.reviewsCount}
-          location={sampleListingData.location}
+          name={detailedListingData.name}
+          rating={detailedListingData.rating}
+          reviewsCount={detailedListingData.reviewsCount}
+          location={detailedListingData.location}
         />
-        <ImageGallery images={sampleListingData.images} />
-        <ListingDetails listing={sampleListingData} />
+        <ImageGallery images={detailedListingData.images} />
+        <ListingDetails listing={detailedListingData} /> {/* Pasamos todos los datos */}
         <ReviewsSection
-          reviews={sampleListingData.reviews}
-          overallRating={sampleListingData.rating}
-          totalReviews={sampleListingData.reviewsCount}
+          reviews={detailedListingData.reviews}
+          overallRating={detailedListingData.rating}
+          totalReviews={detailedListingData.reviewsCount}
         />
         <LocationSection
-          address={sampleListingData.address}
-          neighborhoodDescription={sampleListingData.neighborhoodDescription}
-          mapImageUrl={sampleListingData.mapImageUrl}
+          address={detailedListingData.address}
+          neighborhoodDescription={detailedListingData.neighborhoodDescription}
+          mapImageUrl={detailedListingData.mapImageUrl}
         />
-      </main>
+      </div>
       <Footer />
-      {/* Estilo específico para el contenedor de la página de detalle si es necesario */}
+      {/* Estilos globales para este layout de página, podrían ir en un DetailPage.css */}
       <style jsx global>{`
-        .detail-page-content {
+        .detail-page-content-wrapper {
           max-width: 1120px; /* Ancho típico de contenido en Airbnb */
-          margin: 0 auto;
-          padding: 0 20px; /* Padding lateral */
+          margin: 0 auto;     /* Centrar */
+          padding: 20px 24px 40px 24px; /* Padding superior, laterales, inferior */
         }
-        @media (max-width: 768px) {
-          .detail-page-content {
-            padding: 0 15px;
+        /* Ajustar padding para diferentes tamaños de pantalla */
+        @media (min-width: 744px) { /* Tablet */
+          .detail-page-content-wrapper {
+            padding: 24px 40px 60px 40px;
+          }
+        }
+        @media (min-width: 1128px) { /* Desktop */
+          .detail-page-content-wrapper {
+            padding: 32px 80px 80px 80px;
           }
         }
       `}</style>

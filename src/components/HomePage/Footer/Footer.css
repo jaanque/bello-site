@@ -1,32 +1,33 @@
 /* Footer.css */
 .footer {
-  background-color: #000000; /* Negro */
-  color: #ffffff; /* Blanco */
-  padding: 40px 20px;
-  border-top: 1px solid #333333; /* Borde gris oscuro */
+  background-color: #101010; /* Un gris muy oscuro, no negro puro */
+  color: #DDDDDD; /* Texto principal del footer */
+  padding: 48px 0; /* Padding vertical generoso */
+  border-top: 1px solid #282828;
+  font-size: 0.9em; /* Tamaño de fuente base para el footer */
 }
+
+.footer-content-wrapper { /* Nuevo wrapper para controlar el ancho máximo y padding */
+  max-width: 1120px; /* Ancho común en Airbnb para contenido principal */
+  margin: 0 auto;
+  padding: 0 24px; /* Padding lateral consistente con .app-content */
+}
+
 
 .footer-content {
-  display: flex;
-  flex-wrap: wrap; /* Permitir que las secciones se ajusten en pantallas pequeñas */
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto 30px auto; /* Centrar y añadir margen inferior */
-  gap: 20px; /* Espacio entre secciones */
-}
-
-.footer-section {
-  flex: 1; /* Distribuir el espacio equitativamente */
-  min-width: 200px; /* Ancho mínimo para cada sección antes de envolver */
-  margin-bottom: 20px; /* Espacio si se envuelven */
+  display: grid; /* Usar grid para las secciones */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px 20px; /* Gap entre filas y columnas */
+  margin-bottom: 40px;
 }
 
 .footer-section h4 {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-  color: #f0f0f0; /* Un blanco ligeramente menos brillante para los títulos */
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.85em; /* Títulos de sección más pequeños */
+  font-weight: 600; /* Semibold */
+  margin-bottom: 16px;
+  color: #ffffff; /* Títulos en blanco */
+  text-transform: none; /* Airbnb no usa uppercase aquí */
+  letter-spacing: 0;
 }
 
 .footer-section ul {
@@ -36,43 +37,72 @@
 }
 
 .footer-section ul li {
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* Espacio entre links */
 }
 
 .footer-section ul li a {
-  color: #cccccc; /* Gris claro para los enlaces */
+  color: #B0B0B0; /* Color de links más suave */
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 0.9em; /* Tamaño de links consistente */
   transition: color 0.2s ease-in-out;
 }
 
 .footer-section ul li a:hover {
-  color: #ffffff; /* Blanco al pasar el mouse */
+  color: #ffffff;
   text-decoration: underline;
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #222222; /* Línea divisoria más sutil */
-  font-size: 0.85em;
-  color: #aaaaaa; /* Color de texto aún más claro para el copyright */
+  padding-top: 30px;
+  border-top: 1px solid #282828;
+  font-size: 0.8em; /* Texto del copyright más pequeño */
+  color: #888888; /* Color más tenue */
+  display: flex;
+  flex-wrap: wrap; /* Para que los elementos se ajusten */
+  justify-content: space-between; /* Espaciar elementos */
+  align-items: center;
+  gap: 15px;
 }
+
+.footer-bottom p {
+  margin: 0; /* Quitar margen por defecto del párrafo */
+}
+
+.footer-bottom-links { /* Para links de privacidad, términos, etc. */
+  display: flex;
+  gap: 15px;
+}
+.footer-bottom-links a {
+  color: #B0B0B0;
+  text-decoration: none;
+}
+.footer-bottom-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 
 /* Media queries para mejorar la responsividad del footer */
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column; /* Apilar secciones en pantallas más pequeñas */
-    align-items: center; /* Centrar el contenido de las secciones */
-    text-align: center;
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
+    /* El auto-fit ya debería manejar bien esto, quizás 2 columnas */
   }
-
-  .footer-section {
-    min-width: 100%; /* Cada sección ocupa todo el ancho */
-    margin-bottom: 30px;
+  .footer-bottom {
+    flex-direction: column; /* Apilar en móvil */
+    align-items: flex-start; /* Alinear a la izquierda */
   }
+}
 
-  .footer-section h4 {
-    margin-bottom: 10px;
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr; /* Una columna en móviles muy pequeños */
+    text-align: center; /* Centrar texto de secciones */
+  }
+   .footer-section h4 {
+      margin-bottom: 10px;
+   }
+   .footer-bottom {
+    align-items: center; /* Centrar en móvil si todo es una columna */
   }
 }

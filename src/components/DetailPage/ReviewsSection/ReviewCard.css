@@ -1,26 +1,29 @@
 /* ReviewCard.css */
 .review-card {
-  padding: 15px 0; /* Espacio vertical, sin padding lateral para que ocupe el ancho del grid */
-  border-bottom: 1px solid #282828; /* Separador entre reseñas */
-  color: #c0c0c0; /* Color de texto general para la reseña */
+  padding: 16px 0; /* Aumentar padding vertical */
+  /* El borde lo maneja el contenedor .reviews-grid con gap, o se puede añadir aquí si no hay gap */
+  /* border-bottom: 1px solid #282828; */
+  color: #dcdcdc; /* Color de texto general para la reseña, más claro */
 }
 
-.review-card:last-child {
-  border-bottom: none; /* No hay separador para la última reseña */
-}
+/* Si no se usa gap en el grid, se necesita el borde: */
+/* .review-card:not(:last-child) {
+  border-bottom: 1px solid #282828;
+} */
+
 
 .review-card-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* Mayor margen */
 }
 
 .user-avatar {
-  width: 40px; /* Tamaño del avatar */
-  height: 40px;
-  border-radius: 50%; /* Avatar circular */
-  margin-right: 12px;
-  background-color: #333333; /* Color de fondo si la imagen no carga */
+  width: 48px; /* Avatar más grande */
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px; /* Mayor margen */
+  background-color: #333333;
   object-fit: cover;
 }
 
@@ -30,35 +33,54 @@
 }
 
 .user-name {
-  font-weight: bold;
-  font-size: 0.95em;
-  color: #e0e0e0; /* Nombre de usuario un poco más brillante */
+  font-weight: 600; /* Semibold */
+  font-size: 1em; /* Tamaño de nombre estándar */
+  color: #f5f5f5; /* Nombre de usuario más brillante */
 }
 
 .review-date {
-  font-size: 0.8em;
-  color: #888888; /* Fecha en gris más oscuro */
+  font-size: 0.85em; /* Fecha un poco más grande */
+  color: #999999; /* Fecha en gris medio */
 }
 
-.review-rating {
-  margin-bottom: 8px;
+.review-rating { /* Airbnb no muestra estrellas individuales por reseña aquí, sino en el header de la sección */
+  display: none; /* Ocultar si no se usa el estilo de estrellas de Airbnb */
+  /* Si se quisiera mostrar:
+  margin-bottom: 10px;
   font-size: 0.9em;
-  color: #ffffff; /* Estrellas en blanco */
-}
-
-.review-text {
-  font-size: 0.9em;
-  line-height: 1.6;
-  color: #b0b0b0; /* Texto de la reseña */
-  /* Para truncar texto y añadir "mostrar más" (requiere JS o CSS más avanzado) */
-  /*
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #ffffff;
   */
 }
 
-/* Ajustes para el layout de grid en ReviewsSection.css */
-/* No se necesitan media queries específicas aquí si el grid de ReviewsSection es responsivo */
+.review-text {
+  font-size: 0.95em; /* Texto de reseña ligeramente más grande */
+  line-height: 1.65; /* Mayor interlineado */
+  color: #d0d0d0;
+
+  /* Lógica para "Mostrar más" (truncamiento de texto) */
+  /* Esto es un ejemplo básico, puede requerir JS para "expandir" */
+  max-height: calc(1.65em * 4); /* Mostrar aprox 4 líneas */
+  overflow: hidden;
+  position: relative; /* Para el botón de "mostrar más" si se superpone */
+}
+
+.review-text.expanded { /* Clase que se añadiría con JS */
+  max-height: none;
+  overflow: visible;
+}
+
+.show-more-review-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 600;
+  padding: 8px 0 0 0;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 4px; /* Espacio si está debajo del texto truncado */
+  display: block; /* Para que ocupe su propia línea */
+}
+.show-more-review-btn:hover {
+  color: #f0f0f0;
+}
