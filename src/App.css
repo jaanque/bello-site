@@ -124,7 +124,7 @@ nav {
 /* Hero Section */
 .hero {
   padding: 120px 0 80px;
-  background: #ffffff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +132,7 @@ nav {
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
   width: 100%;
@@ -150,14 +150,14 @@ nav {
 .hero p {
   font-size: 20px;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .search-form {
-  max-width: 850px;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
@@ -165,27 +165,32 @@ nav {
 .search-group {
   display: flex;
   background: white;
-  border-radius: 50px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  border: 2px solid #e5e5e5;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .search-group:hover {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
 }
 
 .search-field {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 14px 24px;
+  padding: 18px 24px;
   border: none;
   background: transparent;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
+  min-height: 60px;
+  justify-content: center;
 }
 
 .search-field:not(:last-child)::after {
@@ -195,55 +200,61 @@ nav {
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 32px;
-  background: #ddd;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #e5e5e5, transparent);
 }
 
 .search-field:hover {
-  background: #f7f7f7;
+  background: rgba(26, 26, 26, 0.02);
 }
 
 .search-field:focus-within {
-  background: #f7f7f7;
+  background: rgba(26, 26, 26, 0.02);
+}
+
+.search-field:focus-within .search-label {
+  color: #1a1a1a;
 }
 
 .search-label {
   font-size: 12px;
   font-weight: 600;
-  color: #222;
-  margin-bottom: 2px;
-  text-transform: none;
-  letter-spacing: 0;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .search-input {
   border: none;
   outline: none;
-  font-size: 14px;
-  color: #717171;
+  font-size: 15px;
+  color: #1a1a1a;
   background: transparent;
   padding: 0;
   width: 100%;
+  font-weight: 500;
 }
 
 .search-input::placeholder {
-  color: #717171;
-  font-size: 14px;
+  color: #999;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .search-input:focus {
-  color: #222;
+  color: #1a1a1a;
 }
 
 .search-btn {
-  background: #ff385c;
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
   color: white;
   border: none;
-  padding: 16px;
-  margin: 8px;
-  border-radius: 50px;
+  padding: 0 24px;
+  margin: 12px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -251,16 +262,19 @@ nav {
   align-items: center;
   justify-content: center;
   min-width: 120px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .search-btn:hover {
-  background: #e00b2c;
-  transform: scale(1.02);
+  background: linear-gradient(135deg, #333 0%, #555 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.3);
 }
 
 .search-btn:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
 /* Features Section */
@@ -540,14 +554,17 @@ footer {
   .search-group {
     flex-direction: column;
     border-radius: 16px;
-    padding: 8px;
+    padding: 16px;
+    gap: 8px;
   }
 
   .search-field {
     padding: 16px 20px;
     border-radius: 12px;
-    margin-bottom: 8px;
-    background: #f7f7f7;
+    margin-bottom: 0;
+    background: #f8f9fa;
+    border: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
   }
 
   .search-field::after {
@@ -556,14 +573,22 @@ footer {
 
   .search-field:hover {
     background: #f0f0f0;
+    border-color: #1a1a1a;
+  }
+
+  .search-field:focus-within {
+    background: white;
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
   }
 
   .search-btn {
     margin: 8px 0 0 0;
-    padding: 16px 24px;
+    padding: 18px 24px;
     border-radius: 12px;
     min-width: auto;
     width: 100%;
+    font-size: 16px;
   }
 
   .search-input {

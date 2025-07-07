@@ -196,7 +196,7 @@ function App() {
                     />
                   </div>
                   <button type="submit" className="search-btn">
-                    <span>🔍</span>
+                    Buscar
                   </button>
                 </div>
               </form>
