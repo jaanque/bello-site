@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import './DetailPage.css'; // Importar el archivo CSS
 // Importar los componentes de la página de detalle
 import Navbar from '../components/HomePage/Navbar/Navbar';
 import Footer from '../components/HomePage/Footer/Footer';
@@ -23,8 +24,9 @@ const DetailPage = () => {
     return (
         <>
             <Navbar />
-            <main className="app-content detail-page-content-wrapper">
-                <div style={{ padding: '40px', textAlign: 'center', color: '#fff' }}>
+            {/* Aplicar la clase directamente al main o a un div wrapper */}
+            <main className="detail-page-content-wrapper" style={{color: '#fff', textAlign: 'center', padding: '40px 0'}}>
+                <div>
                     <h2>Alojamiento no encontrado</h2>
                     <p>No pudimos encontrar el alojamiento que buscas.</p>
                 </div>
@@ -93,25 +95,7 @@ const DetailPage = () => {
         />
       </div>
       <Footer />
-      {/* Estilos globales para este layout de página, podrían ir en un DetailPage.css */}
-      <style jsx global>{`
-        .detail-page-content-wrapper {
-          max-width: 1120px; /* Ancho típico de contenido en Airbnb */
-          margin: 0 auto;     /* Centrar */
-          padding: 20px 24px 40px 24px; /* Padding superior, laterales, inferior */
-        }
-        /* Ajustar padding para diferentes tamaños de pantalla */
-        @media (min-width: 744px) { /* Tablet */
-          .detail-page-content-wrapper {
-            padding: 24px 40px 60px 40px;
-          }
-        }
-        @media (min-width: 1128px) { /* Desktop */
-          .detail-page-content-wrapper {
-            padding: 32px 80px 80px 80px;
-          }
-        }
-      `}</style>
+      {/* El bloque <style jsx global> ha sido eliminado y su contenido movido a DetailPage.css */}
     </>
   );
 };

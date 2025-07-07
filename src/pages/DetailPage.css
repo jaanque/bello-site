@@ -1,0 +1,19 @@
+/* DetailPage.css */
+.detail-page-content-wrapper {
+  max-width: 1120px; /* Ancho típico de contenido en Airbnb */
+  margin: 0 auto;     /* Centrar */
+  padding: 20px 24px 40px 24px; /* Padding superior, laterales, inferior */
+}
+
+/* Ajustar padding para diferentes tamaños de pantalla */
+@media (min-width: 744px) { /* Tablet */
+  .detail-page-content-wrapper {
+    padding: 24px 40px 60px 40px;
+  }
+}
+
+@media (min-width: 1128px) { /* Desktop */
+  .detail-page-content-wrapper {
+    padding: 32px 80px 80px 80px;
+  }
+}

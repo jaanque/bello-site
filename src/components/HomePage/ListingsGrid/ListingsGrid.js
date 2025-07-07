@@ -3,7 +3,7 @@ import ListingCard from './ListingCard/ListingCard';
 import './ListingsGrid.css';
 
 // Datos de ejemplo para los listados
-const sampleListings = [
+export const sampleListings = [ // Añadido export
   { id: 1, name: 'Apartamento con estilo en el centro', location: 'Ciudad Principal', price: 120, rating: 4.8, imageUrl: 'https://via.placeholder.com/300x200/111111/EEEEEE/?text=Apto+1' },
   { id: 2, name: 'Cabaña acogedora en el bosque', location: 'Montaña Verde', price: 95, rating: 4.9, imageUrl: 'https://via.placeholder.com/300x200/222222/DDDDDD/?text=Cabaña+2' },
   { id: 3, name: 'Villa moderna con piscina', location: 'Costa del Sol', price: 250, rating: 4.7, imageUrl: 'https://via.placeholder.com/300x200/000000/FFFFFF/?text=Villa+3' },
