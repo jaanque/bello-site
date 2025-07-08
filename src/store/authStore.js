@@ -97,7 +97,8 @@ const useAuthStore = create((set, get) => ({
       set({ session, user: session?.user || null, loading: false });
     });
     return () => {
-      authListener?.unsubscribe();
+      // Correctly call unsubscribe on the subscription object
+      authListener?.subscription?.unsubscribe();
     };
   }
 }));
