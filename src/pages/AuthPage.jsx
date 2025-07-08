@@ -1,45 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Asumiremos que usaremos react-router-dom más adelante
+import { useNavigate } from 'react-router-dom';
 import AuthForm from '../components/auth/AuthForm';
 import useAuthStore from '../store/authStore';
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const { session, signUp, signIn, loading, error, fetchSession } = useAuthStore();
-
-  // Esto es un placeholder para la navegación.
-  // En una app real con react-router-dom, useNavigate se usaría para redirigir.
-  const navigate = (path) => {
-    console.log(`Navigating to ${path}, (redirecting to ${window.location.origin}${path})`);
-    // window.location.href = path; // Esto causaría un full page reload.
-                                 // react-router-dom lo manejaría mejor.
-  };
+  const { session, signUp, signIn, loading, error } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Si ya hay una sesión al cargar la página (ej. usuario ya logueado),
     // redirigir a la página principal.
-    // fetchSession(); // Podríamos llamar a fetchSession aquí o en App.jsx
     if (session) {
       navigate('/'); // Redirigir a la página principal o dashboard
     }
   }, [session, navigate]);
 
   const handleSubmit = async (email, password) => {
-    let result;
+    let authSuccess = false;
     if (isSignUp) {
-      result = await signUp(email, password);
+      const result = await signUp(email, password);
+      // Para signUp, la sesión puede no estar disponible inmediatamente si se requiere confirmación por email.
+      // Sin embargo, si la confirmación no es necesaria o está deshabilitada para desarrollo,
+      // 'result.user' podría existir. La redirección se basa en 'session' en el useEffect.
+      // Si Supabase devuelve una sesión directamente tras el signUp (auto-confirmación), el useEffect lo manejará.
+      // Si no, el usuario deberá confirmar su email y luego iniciar sesión.
+      if (result && result.user) {
+        console.log("Sign up attempt data:", result);
+        // No navegamos aquí directamente, dejamos que el useEffect basado en 'session' lo haga.
+        // Si hay sesión, useEffect redirige. Si no (esperando confirmación), se queda en AuthPage.
+        // El toast de éxito/confirmación ya se maneja en authStore.
+      } else if (result && result.error) {
+        console.error("Sign up error:", result.error);
+      }
     } else {
-      result = await signIn(email, password);
+      const sessionData = await signIn(email, password);
+      if (sessionData) {
+        console.log("Sign in success, session:", sessionData);
+        authSuccess = true;
+      } else {
+        // El error ya se maneja y se muestra mediante el 'error' state de useAuthStore
+        // y el toast en authStore.
+        console.error("Sign in error occurred.");
+      }
     }
-    // Si el login/signup fue exitoso y tenemos una sesión,
-    // la redirección ocurrirá por el useEffect de arriba.
-    // Si hubo error, se mostrará en el AuthForm.
-    if (result && result.user) {
-        console.log("Auth success, session:", result);
-        // navigate('/'); // Opcional: forzar navegación aquí también
-    } else if (result && result.error) {
-        console.error("Auth error:", result.error);
-    }
+
+    // Después de un signIn exitoso, el estado de 'session' se actualizará,
+    // y el useEffect de arriba se encargará de la redirección.
+    // No es necesario navegar explícitamente aquí si el useEffect ya lo hace.
+    // if (authSuccess) {
+    // navigate('/'); // Esto sería redundante si el useEffect ya funciona correctamente.
+    // }
   };
 
   return (
