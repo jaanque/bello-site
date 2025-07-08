@@ -34,36 +34,51 @@ const FolderList = () => {
   }
 
   if (folders.length === 0) {
-    return <p className="text-slate-500 text-center py-4">No folders yet. Create one above!</p>;
+    return <p className="text-slate-500 text-center py-4 px-2">No folders yet.</p>;
   }
 
   return (
-    <div className="space-y-4"> {/* Aumentado el espaciado entre carpetas */}
-      <h3 className="text-2xl font-semibold text-slate-700 mb-4">Your Folders</h3> {/* Ajuste de tamaño, color y margen */}
-      {folders.map((folder) => (
-        <div
-          key={folder.id}
-          className="p-5 bg-white shadow-sm rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0" // Padding aumentado, sombra más sutil, responsive
-        >
-          <span className="text-slate-700 font-medium text-lg">{folder.name}</span> {/* Tamaño de texto aumentado */}
-          <div className="space-x-2 flex-shrink-0">
-            <button
-              onClick={() => handleRename(folder.id, folder.name)}
-              className="px-3.5 py-1.5 text-sm bg-slate-200 text-slate-700 rounded-md hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-slate-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-              disabled={loading}
-            >
-              Rename
-            </button>
-            <button
-              onClick={() => handleDelete(folder.id, folder.name)}
-              className="px-3.5 py-1.5 text-sm bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-500 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-              disabled={loading}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+    <div className="mt-4">
+      <h3 className="text-lg font-semibold text-slate-700 mb-3 px-2">Your Folders</h3>
+      <nav>
+        <ul className="space-y-1">
+          {folders.map((folder) => (
+            <li key={folder.id}>
+              <a
+                href="#" // Placeholder link, should eventually navigate to the folder's content
+                onClick={(e) => e.preventDefault()} // Prevent default for now
+                className="group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+              >
+                <span className="truncate">{folder.name}</span>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity space-x-1 flex-shrink-0">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering link navigation
+                      handleRename(folder.id, folder.name);
+                    }}
+                    className="p-1 text-xs bg-slate-200 text-slate-600 rounded hover:bg-slate-300 focus:outline-none focus:ring-1 focus:ring-slate-400 disabled:opacity-60"
+                    disabled={loading}
+                    title="Rename folder"
+                  >
+                    ✏️
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering link navigation
+                      handleDelete(folder.id, folder.name);
+                    }}
+                    className="p-1 text-xs bg-red-200 text-red-700 rounded hover:bg-red-300 focus:outline-none focus:ring-1 focus:ring-red-400 disabled:opacity-60"
+                    disabled={loading}
+                    title="Delete folder"
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 };

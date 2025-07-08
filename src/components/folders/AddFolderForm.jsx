@@ -21,9 +21,10 @@ const AddFolderForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 p-6 bg-slate-50 rounded-lg shadow-sm"> {/* Ajustes de padding, color y sombra */}
-      <h3 className="text-xl font-semibold text-slate-700 mb-4">Create New Folder</h3> {/* Ajuste de color y margen */}
-      <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+    // Removed specific background, padding, and shadow. Adjusted bottom margin.
+    <form onSubmit={handleSubmit} className="mb-6"> 
+      <h3 className="text-lg font-semibold text-slate-700 mb-3 px-2">Create Folder</h3> {/* Consistent with FolderList title styling */}
+      <div className="flex flex-col space-y-2 px-1"> {/* Adjusted to flex-col and simpler spacing for sidebar */}
         <input
           type="text"
           value={folderName}

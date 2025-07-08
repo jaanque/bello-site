@@ -18,27 +18,34 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 p-4 sm:p-6 md:p-8"> {/* Ajustado padding y color de fondo */}
-      <div className="max-w-5xl mx-auto bg-white shadow rounded-lg p-6 sm:p-8"> {/* Sombra más sutil, padding ajustado, max-width aumentado */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"> {/* Mejorado responsive y margen */}
-          <h1 className="text-3xl font-bold text-slate-800 mb-4 sm:mb-0">Welcome, {user?.email}!</h1>
-          <button
-            onClick={handleSignOut}
-            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
-          >
-            Sign Out
-          </button>
+    <div className="flex h-screen bg-slate-100">
+      {/* Sidebar */}
+      <div className="w-64 bg-white shadow-md p-4 space-y-4">
+        <div className="mb-8">
+          {/* Placeholder for Logo or App Name if desired */}
+          <h2 className="text-2xl font-semibold text-slate-800">My App</h2>
         </div>
-        <p className="text-slate-600 mb-8 text-lg">Manage your folders and saved pages from here.</p> {/* Margen y tamaño de texto ajustado */}
+        <AddFolderForm />
+        <FolderList />
+      </div>
 
-        {/* Sección de Gestión de Carpetas */}
-        <div className="mt-8">
-          <AddFolderForm />
-          <FolderList />
+      {/* Main Content Area */}
+      <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-auto">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+            <h1 className="text-3xl font-bold text-slate-800 mb-4 sm:mb-0">Welcome, {user?.email}!</h1>
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
+            >
+              Sign Out
+            </button>
+          </div>
+          <p className="text-slate-600 mb-8 text-lg">Manage your folders and saved pages from here.</p>
+
+          {/* El contenido principal de la aplicación, como páginas dentro de carpetas, se renderizará aquí */}
+          <Outlet /> {/* Para rutas anidadas si es necesario */}
         </div>
-
-        {/* Aquí iría el contenido principal de la aplicación, como páginas dentro de carpetas */}
-        <Outlet /> {/* Para rutas anidadas si es necesario */}
       </div>
     </div>
   );
