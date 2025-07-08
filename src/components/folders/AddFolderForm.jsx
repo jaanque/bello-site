@@ -21,26 +21,30 @@ const AddFolderForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 p-4 bg-gray-50 rounded-lg shadow">
-      <h3 className="text-lg font-medium text-gray-800 mb-2">Create New Folder</h3>
-      <div className="flex space-x-2">
+    <form onSubmit={handleSubmit} className="mb-8 p-6 bg-slate-50 rounded-lg shadow-sm"> {/* Ajustes de padding, color y sombra */}
+      <h3 className="text-xl font-semibold text-slate-700 mb-4">Create New Folder</h3> {/* Ajuste de color y margen */}
+      <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
         <input
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
           placeholder="Enter folder name"
-          className="flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className="flex-grow px-3.5 py-2.5 border border-slate-300 rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
           disabled={loading}
         />
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+          className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
         >
           {loading ? 'Adding...' : 'Add Folder'}
         </button>
       </div>
-      {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
+      {error && (
+        <p className="text-sm text-red-600 bg-red-50 p-3 rounded-md border border-red-200 mt-3">
+          {error}
+        </p>
+      )}
     </form>
   );
 };

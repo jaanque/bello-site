@@ -18,18 +18,18 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Welcome, {user?.email}!</h1>
+    <div className="min-h-screen bg-slate-100 p-4 sm:p-6 md:p-8"> {/* Ajustado padding y color de fondo */}
+      <div className="max-w-5xl mx-auto bg-white shadow rounded-lg p-6 sm:p-8"> {/* Sombra más sutil, padding ajustado, max-width aumentado */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"> {/* Mejorado responsive y margen */}
+          <h1 className="text-3xl font-bold text-slate-800 mb-4 sm:mb-0">Welcome, {user?.email}!</h1>
           <button
             onClick={handleSignOut}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
           >
             Sign Out
           </button>
         </div>
-        <p className="text-gray-600 mb-6">Manage your folders and saved pages from here.</p>
+        <p className="text-slate-600 mb-8 text-lg">Manage your folders and saved pages from here.</p> {/* Margen y tamaño de texto ajustado */}
 
         {/* Sección de Gestión de Carpetas */}
         <div className="mt-8">

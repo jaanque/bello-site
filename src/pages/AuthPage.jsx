@@ -43,40 +43,44 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-100 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+      {/* Contenedor principal del formulario y título */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        {/* Logo - se puede mantener o eliminar si se prefiere un look más minimalista */}
         <img
-          className="mx-auto h-12 w-auto"
+          className="mx-auto h-10 w-auto" // Reducido ligeramente el tamaño del logo
           src="/vite.svg" // Placeholder logo
-          alt="Workflow"
+          alt="App Logo"
         />
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-800">
           {isSignUp ? 'Create your account' : 'Sign in to your account'}
         </h2>
       </div>
 
+      {/* Card del formulario */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
           <AuthForm
             type={isSignUp ? 'signUp' : 'signIn'}
             onSubmit={handleSubmit}
             loading={loading}
             error={error}
+            // No pasamos clases de layout aquí, AuthForm se enfocará en los campos
           />
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
+                <div className="w-full border-t border-slate-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or</span>
+                <span className="px-2 bg-white text-slate-500">Or</span>
               </div>
             </div>
 
             <div className="mt-6 text-center">
               <button
                 onClick={() => setIsSignUp(!isSignUp)}
-                className="font-medium text-blue-600 hover:text-blue-500"
+                className="font-medium text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md"
               >
                 {isSignUp
                   ? 'Already have an account? Sign in'
